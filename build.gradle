@@ -29,7 +29,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.26'
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'com.bitpay:bitpay_sdk:9.0.0-beta1'
-    implementation 'org.liquibase:liquibase-core:4.19.0'
+    implementation 'org.liquibase:liquibase-core:4.21.1'
     implementation 'com.h2database:h2:2.1.214'
     implementation 'org.springframework:spring-webflux:6.0.5'
     implementation 'org.springframework:spring-websocket:6.0.5'
