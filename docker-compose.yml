@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  java:
+    build:
+      context: ./docker/java
+    user: gradle
+    volumes:
+      - ./:/home/gradle/project
+    ports:
+      - "8000:8000"
+    command: gradle bootRun
