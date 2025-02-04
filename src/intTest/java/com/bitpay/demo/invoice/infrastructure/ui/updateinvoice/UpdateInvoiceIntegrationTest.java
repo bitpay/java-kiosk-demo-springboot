@@ -7,6 +7,8 @@ package com.bitpay.demo.invoice.infrastructure.ui.updateinvoice;
 
 import com.bitpay.demo.AbstractUiIntegrationTest;
 import com.bitpay.demo.invoice.domain.Invoice;
+import java.util.Map;
+import javax.annotation.Nullable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +30,11 @@ public class UpdateInvoiceIntegrationTest extends AbstractUiIntegrationTest {
         final var invoice = createInvoice();
 
         // when
-        final var result = getResultActions(invoice.getUuid().value(), getDataFromFile("updateData.json"));
+        final var result = getResultActions(
+            invoice.getUuid().value(),
+            getDataFromFile("updateData.json"),
+            Map.of("x-signature", "dIFy1UloHI6k5rpdVdl3cADtPF01g/xHKt6rqKuo5Ls=")
+        );
 
         result.andExpect(MockMvcResultMatchers.status().isOk());
         Assertions.assertEquals(
@@ -43,7 +49,11 @@ public class UpdateInvoiceIntegrationTest extends AbstractUiIntegrationTest {
         final var invoice = createInvoice();
 
         // when
-        final var result = getResultActions("12312412", getDataFromFile("updateData.json"));
+        final var result = getResultActions(
+            "12312412",
+            getDataFromFile("updateData.json"),
+            Map.of("x-signature", "dIFy1UloHI6k5rpdVdl3cADtPF01g/xHKt6rqKuo5Ls=")
+        );
 
         result.andExpect(MockMvcResultMatchers.status().isNotFound());
         Assertions.assertEquals(
@@ -60,7 +70,8 @@ public class UpdateInvoiceIntegrationTest extends AbstractUiIntegrationTest {
         // when
         final var result = getResultActions(
             invoice.getUuid().value(),
-            getDataFromFile("invalidUpdateData.json")
+            getDataFromFile("invalidUpdateData.json"),
+            Map.of("x-signature", "33SW42rFbxKuGj7s4166nOrWuHHHM1EMxgHmgT5tksU=")
         );
 
         // then
@@ -72,11 +83,31 @@ public class UpdateInvoiceIntegrationTest extends AbstractUiIntegrationTest {
         );
     }
 
+    @Test
+    public void shouldNotUpdateInvoiceWhenWebhookSignatureVerificationFailed() throws Exception {
+        // given
+        final var invoice = createInvoice();
+
+        // when
+        final var result = getResultActions(
+            "12312412",
+            getDataFromFile("updateData.json"),
+            Map.of("x-signature", "randomsignature")
+        );
+
+        result.andExpect(MockMvcResultMatchers.status().isOk());
+        Assertions.assertEquals(
+            "new",
+            this.invoiceRepository.findById(invoice.getInvoiceId()).getStatus().value()
+        );
+    }
+
     private ResultActions getResultActions(
         final String invoiceUuId,
-        final String requestBody
+        final String requestBody,
+        @Nullable final Map<String, String> headers
     ) throws Exception {
-        return post(URL + invoiceUuId, requestBody);
+        return post(URL + invoiceUuId, requestBody, headers);
     }
 
     private Invoice createInvoice() {

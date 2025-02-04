@@ -6,6 +6,8 @@
 package com.bitpay.demo;
 
 import java.util.Map;
+import java.util.Objects;
+import javax.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,10 +48,15 @@ public abstract class AbstractUiIntegrationTest extends AbstractIntegrationTest 
 
     protected ResultActions post(
         final String url,
-        final String requestBody
+        final String requestBody,
+        @Nullable final Map<String, String> headers
     ) throws Exception {
         final var post = MockMvcRequestBuilders.post(url).content(requestBody)
             .contentType(MediaType.APPLICATION_JSON);
+
+        if (!Objects.isNull(headers)) {
+            headers.forEach((key, value) -> post.header(key, value));
+        }
 
         return getResultActions(post);
     }
