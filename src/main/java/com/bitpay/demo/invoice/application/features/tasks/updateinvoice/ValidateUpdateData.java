@@ -8,7 +8,7 @@ package com.bitpay.demo.invoice.application.features.tasks.updateinvoice;
 import com.bitpay.demo.DependencyInjection;
 import com.bitpay.demo.invoice.domain.BitPayId;
 import com.bitpay.demo.shared.StringToObjectParser;
-import com.bitpay.sdk.model.Invoice.InvoiceStatus;
+import com.bitpay.sdk.model.invoice.InvoiceStatus;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;

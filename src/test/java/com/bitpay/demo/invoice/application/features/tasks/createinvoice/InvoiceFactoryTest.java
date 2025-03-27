@@ -40,7 +40,7 @@ class InvoiceFactoryTest implements UnitTest, GetBitPayInvoice {
     @Test
     void shouldMapToInvoice() throws JSONException {
         // given
-        final com.bitpay.sdk.model.Invoice.Invoice bitPayInvoice = getBitPayInvoice();
+        final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice = getBitPayInvoice();
 
         // when
         final var result = getTestedClass().create(bitPayInvoice, new InvoiceUuid("123-456-789"));

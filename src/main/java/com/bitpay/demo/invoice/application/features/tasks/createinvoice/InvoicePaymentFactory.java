@@ -30,7 +30,7 @@ class InvoicePaymentFactory {
     }
 
     @NonNull
-    InvoicePayment create(@NonNull final com.bitpay.sdk.model.Invoice.Invoice bitPayInvoice) {
+    InvoicePayment create(@NonNull final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice) {
         final var invoicePayment = new InvoicePayment(
             new AmountPaid(bitPayInvoice.getAmountPaid().doubleValue()),
             new DisplayAmountPaid(bitPayInvoice.getDisplayAmountPaid().doubleValue()),
@@ -59,7 +59,7 @@ class InvoicePaymentFactory {
     @NonNull
     private Collection<InvoicePaymentCurrency> getInvoicePaymentCurrencies(
         @NonNull final InvoicePayment invoicePayment,
-        @NonNull final com.bitpay.sdk.model.Invoice.Invoice bitPayInvoice
+        @NonNull final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice
     ) {
         return bitPayInvoice.getPaymentTotals().entrySet().stream()
             .map(code -> this.invoicePaymentCurrencyFactory.create(code, invoicePayment, bitPayInvoice))

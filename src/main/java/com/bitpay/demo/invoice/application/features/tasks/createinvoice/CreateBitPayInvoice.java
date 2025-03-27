@@ -11,8 +11,8 @@ import com.bitpay.demo.shared.ObjectToJsonConverter;
 import com.bitpay.demo.shared.bitpayproperties.BitPayProperties;
 import com.bitpay.sdk.Client;
 import com.bitpay.sdk.exceptions.BitPayException;
-import com.bitpay.sdk.model.Invoice.Buyer;
-import com.bitpay.sdk.model.Invoice.Invoice;
+import com.bitpay.sdk.model.invoice.Buyer;
+import com.bitpay.sdk.model.invoice.Invoice;
 import java.util.Map;
 import java.util.UUID;
 import lombok.NonNull;
@@ -51,7 +51,7 @@ class CreateBitPayInvoice {
         invoice.setTransactionSpeed("medium");
         invoice.setItemDesc(StringUtils.capitalize(this.bitPayProperties.getMode()));
         invoice.setPosData(posData);
-        invoice.setNotificationURL(this.getNotificationUrl.execute(uuid));
+        invoice.setNotificationUrl(this.getNotificationUrl.execute(uuid));
         invoice.setExtendedNotifications(true);
 
         if (validatedParams.keySet().stream().anyMatch(key -> key.startsWith("buyer"))) {

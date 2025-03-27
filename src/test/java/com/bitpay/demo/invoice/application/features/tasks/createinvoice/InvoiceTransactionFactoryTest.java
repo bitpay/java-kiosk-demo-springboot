@@ -17,7 +17,7 @@ class InvoiceTransactionFactoryTest implements UnitTest, GetBitPayInvoice {
     @Test
     void shouldMapToInvoiceTransaction() throws JSONException {
         // given
-        final com.bitpay.sdk.model.Invoice.Invoice bitPayInvoice = getBitPayInvoice();
+        final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice = getBitPayInvoice();
 
         // when
         final var result = getTestedClass().create(

@@ -13,7 +13,7 @@ import com.bitpay.demo.shared.form.MissingRequiredField;
 import com.bitpay.demo.shared.logger.LogCode;
 import com.bitpay.demo.shared.logger.Logger;
 import com.bitpay.sdk.exceptions.BitPayException;
-import com.bitpay.sdk.model.Invoice.Invoice;
+import com.bitpay.sdk.model.invoice.Invoice;
 import java.util.Map;
 import java.util.UUID;
 import lombok.NonNull;

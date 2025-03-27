@@ -15,7 +15,7 @@ class InvoiceBuyerProvidedInfoFactoryTest implements UnitTest, GetBitPayInvoice 
     @Test
     void shouldMapToInvoiceBuyerProvidedInfo() throws JSONException {
         // given
-        final com.bitpay.sdk.model.Invoice.Invoice bitPayInvoice = getBitPayInvoice();
+        final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice = getBitPayInvoice();
 
         // when
         final com.bitpay.demo.invoice.domain.buyer.InvoiceBuyerProvidedInfo result = getTestedClass()

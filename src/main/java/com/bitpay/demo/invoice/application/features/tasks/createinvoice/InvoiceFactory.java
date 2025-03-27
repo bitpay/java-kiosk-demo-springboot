@@ -34,8 +34,8 @@ import com.bitpay.demo.invoice.domain.TargetConfirmations;
 import com.bitpay.demo.invoice.domain.Token;
 import com.bitpay.demo.invoice.domain.TransactionSpeed;
 import com.bitpay.demo.invoice.domain.itemizeddetail.InvoiceItemizedDetail;
-import com.bitpay.sdk.model.Invoice.InvoiceItemizedDetails;
-import com.bitpay.sdk.model.Invoice.InvoiceTransaction;
+import com.bitpay.sdk.model.invoice.InvoiceItemizedDetails;
+import com.bitpay.sdk.model.invoice.InvoiceTransaction;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -71,7 +71,7 @@ class InvoiceFactory {
 
     @NonNull
     Invoice create(
-        @NonNull final com.bitpay.sdk.model.Invoice.Invoice bitPayInvoice,
+        @NonNull final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice,
         @NonNull final InvoiceUuid uuid
     ) {
         final var invoice = new Invoice(
@@ -92,8 +92,8 @@ class InvoiceFactory {
             new BitPayGuid(bitPayInvoice.getGuid()),
             new ExceptionStatus(bitPayInvoice.getExceptionStatus()),
             new BitPayUrl(bitPayInvoice.getUrl()),
-            new RedirectUrl(bitPayInvoice.getRedirectURL()),
-            new CloseUrl(bitPayInvoice.getCloseURL()),
+            new RedirectUrl(bitPayInvoice.getRedirectUrl()),
+            new CloseUrl(bitPayInvoice.getCloseUrl()),
             new AcceptanceWindow(bitPayInvoice.getAcceptanceWindow()),
             new Token(bitPayInvoice.getToken()),
             new MerchantName(bitPayInvoice.getMerchantName()),

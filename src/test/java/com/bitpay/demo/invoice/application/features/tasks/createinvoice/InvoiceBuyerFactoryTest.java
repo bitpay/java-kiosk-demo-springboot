@@ -15,7 +15,7 @@ import com.bitpay.demo.invoice.domain.buyer.BuyerSms;
 import com.bitpay.demo.invoice.domain.buyer.BuyerSmsVerified;
 import com.bitpay.demo.invoice.domain.buyer.InvoiceBuyer;
 import com.bitpay.demo.invoice.domain.buyer.InvoiceBuyerProvidedInfo;
-import com.bitpay.sdk.model.Invoice.Invoice;
+import com.bitpay.sdk.model.invoice.Invoice;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
@@ -27,12 +27,12 @@ class InvoiceBuyerFactoryTest implements UnitTest, GetBitPayInvoice {
     @Test
     void shouldMapToInvoiceBuyer() throws JSONException {
         // given
-        final com.bitpay.sdk.model.Invoice.Invoice bitPayInvoice = getBitPayInvoice();
+        final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice = getBitPayInvoice();
 
         // when
         final InvoiceBuyer result = getTestedClass().create(
             bitPayInvoice,
-            Mockito.mock(com.bitpay.sdk.model.Invoice.InvoiceBuyerProvidedInfo.class)
+            Mockito.mock(com.bitpay.sdk.model.invoice.InvoiceBuyerProvidedInfo.class)
         );
 
         // then
@@ -47,12 +47,12 @@ class InvoiceBuyerFactoryTest implements UnitTest, GetBitPayInvoice {
     void shouldMapToInvoiceBuyerWhenBitPayHasNotBuyer() throws JSONException {
         // given
         final String bitPayInvoiceJson = getDataFromFile("bitPayInvoiceWithoutBuyer.json");
-        final com.bitpay.sdk.model.Invoice.Invoice bitPayInvoice = toObject(bitPayInvoiceJson, Invoice.class);
+        final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice = toObject(bitPayInvoiceJson, Invoice.class);
 
         // when
         final InvoiceBuyer result = getTestedClass().create(
             bitPayInvoice,
-            Mockito.mock(com.bitpay.sdk.model.Invoice.InvoiceBuyerProvidedInfo.class)
+            Mockito.mock(com.bitpay.sdk.model.invoice.InvoiceBuyerProvidedInfo.class)
         );
 
         // then
