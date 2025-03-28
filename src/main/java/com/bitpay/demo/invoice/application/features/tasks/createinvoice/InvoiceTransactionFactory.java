@@ -10,7 +10,7 @@ import com.bitpay.demo.invoice.domain.Amount;
 import com.bitpay.demo.invoice.domain.Invoice;
 import com.bitpay.demo.invoice.domain.transaction.Confirmations;
 import com.bitpay.demo.invoice.domain.transaction.Txid;
-import com.bitpay.sdk.model.Invoice.InvoiceTransaction;
+import com.bitpay.sdk.model.invoice.InvoiceTransaction;
 import java.time.ZoneId;
 import java.util.Objects;
 import lombok.NonNull;

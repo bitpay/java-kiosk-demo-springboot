@@ -25,9 +25,9 @@ import com.bitpay.demo.invoice.domain.payment.SatoshisPerByte;
 import com.bitpay.demo.invoice.domain.payment.Subtotal;
 import com.bitpay.demo.invoice.domain.payment.Total;
 import com.bitpay.demo.invoice.domain.payment.TotalFee;
-import com.bitpay.sdk.model.Invoice.MinerFees;
-import com.bitpay.sdk.model.Invoice.MinerFeesItem;
-import com.bitpay.sdk.model.Invoice.SupportedTransactionCurrencies;
+import com.bitpay.sdk.model.invoice.MinerFees;
+import com.bitpay.sdk.model.invoice.MinerFeesItem;
+import com.bitpay.sdk.model.invoice.SupportedTransactionCurrencies;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Map;
@@ -42,7 +42,7 @@ class InvoicePaymentCurrencyFactory {
     InvoicePaymentCurrency create(
         @NonNull final Map.Entry<String, String> code,
         @NonNull final InvoicePayment invoicePayment,
-        @NonNull final com.bitpay.sdk.model.Invoice.Invoice bitPayInvoice
+        @NonNull final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice
     ) {
         final var bitPaySupportedTransactionCurrency = getBitPaySupportedTransactionCurrency(
             code.getKey(),
@@ -129,7 +129,7 @@ class InvoicePaymentCurrencyFactory {
     }
 
     @Nullable
-    private com.bitpay.sdk.model.Invoice.SupportedTransactionCurrency getBitPaySupportedTransactionCurrency(
+    private com.bitpay.sdk.model.invoice.SupportedTransactionCurrency getBitPaySupportedTransactionCurrency(
         @NonNull final String code,
         @NonNull final SupportedTransactionCurrencies supportedTransactionCurrencies
     ) {
@@ -159,7 +159,7 @@ class InvoicePaymentCurrencyFactory {
 
     @NonNull
     private InvoicePaymentCurrencySupportedTransactionCurrency getSupportedTransactionCurrency(
-        @Nullable final com.bitpay.sdk.model.Invoice.SupportedTransactionCurrency bitPaySupportedTransactionCurrency
+        @Nullable final com.bitpay.sdk.model.invoice.SupportedTransactionCurrency bitPaySupportedTransactionCurrency
     ) {
         if (Objects.isNull(bitPaySupportedTransactionCurrency)) {
             return new InvoicePaymentCurrencySupportedTransactionCurrency(

@@ -6,7 +6,7 @@
 package com.bitpay.demo.invoice.application.features.tasks.createinvoice;
 
 import com.bitpay.demo.UnitTest;
-import com.bitpay.sdk.model.Invoice.Invoice;
+import com.bitpay.sdk.model.invoice.Invoice;
 
 interface GetBitPayInvoice extends UnitTest {
 

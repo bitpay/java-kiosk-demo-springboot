@@ -16,7 +16,7 @@ class InvoiceItemizedDetailFactoryTest implements UnitTest, GetBitPayInvoice {
     @Test
     void shouldMapToInvoiceItemizedDetail() throws JSONException {
         // given
-        final com.bitpay.sdk.model.Invoice.Invoice bitPayInvoice = getBitPayInvoice();
+        final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice = getBitPayInvoice();
         final var invoiceJson = getDataFromFile("invoice.json");
         final var invoice = toObject(invoiceJson, Invoice.class);
 

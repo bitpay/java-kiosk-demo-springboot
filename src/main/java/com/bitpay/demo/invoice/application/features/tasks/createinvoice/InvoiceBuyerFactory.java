@@ -17,8 +17,8 @@ import com.bitpay.demo.invoice.domain.buyer.BuyerPostalCode;
 import com.bitpay.demo.invoice.domain.buyer.BuyerProvidedEmail;
 import com.bitpay.demo.invoice.domain.buyer.BuyerRegion;
 import com.bitpay.demo.invoice.domain.buyer.InvoiceBuyer;
-import com.bitpay.sdk.model.Invoice.Invoice;
-import com.bitpay.sdk.model.Invoice.InvoiceBuyerProvidedInfo;
+import com.bitpay.sdk.model.invoice.Invoice;
+import com.bitpay.sdk.model.invoice.InvoiceBuyerProvidedInfo;
 import java.util.Objects;
 import lombok.NonNull;
 

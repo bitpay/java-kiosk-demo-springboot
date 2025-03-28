@@ -21,7 +21,7 @@ class InvoiceBuyerProvidedInfoFactory {
 
     @NonNull
     public InvoiceBuyerProvidedInfo create(
-        @NonNull final com.bitpay.sdk.model.Invoice.InvoiceBuyerProvidedInfo invoiceBuyerProvidedInfo
+        @NonNull final com.bitpay.sdk.model.invoice.InvoiceBuyerProvidedInfo invoiceBuyerProvidedInfo
     ) {
         return new InvoiceBuyerProvidedInfo(
             new BuyerName(invoiceBuyerProvidedInfo.getName()),

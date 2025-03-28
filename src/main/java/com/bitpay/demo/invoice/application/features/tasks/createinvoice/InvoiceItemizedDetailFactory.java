@@ -11,7 +11,7 @@ import com.bitpay.demo.invoice.domain.Invoice;
 import com.bitpay.demo.invoice.domain.itemizeddetail.Description;
 import com.bitpay.demo.invoice.domain.itemizeddetail.InvoiceItemizedDetail;
 import com.bitpay.demo.invoice.domain.itemizeddetail.IsFee;
-import com.bitpay.sdk.model.Invoice.InvoiceItemizedDetails;
+import com.bitpay.sdk.model.invoice.InvoiceItemizedDetails;
 import lombok.NonNull;
 
 @DependencyInjection

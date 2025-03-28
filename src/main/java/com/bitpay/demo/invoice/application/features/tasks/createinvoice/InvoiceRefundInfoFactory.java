@@ -12,7 +12,7 @@ import com.bitpay.demo.invoice.domain.refund.InvoiceRefund;
 import com.bitpay.demo.invoice.domain.refund.InvoiceRefundInfo;
 import com.bitpay.demo.invoice.domain.refund.InvoiceRefundInfoAmount;
 import com.bitpay.demo.invoice.domain.refund.SupportRequest;
-import com.bitpay.sdk.model.Invoice.RefundInfo;
+import com.bitpay.sdk.model.invoice.RefundInfo;
 import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Collectors;

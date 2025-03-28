@@ -8,7 +8,7 @@ package com.bitpay.demo.donation.infrastructure.ui.createdonation;
 import com.bitpay.demo.AbstractUiIntegrationTest;
 import com.bitpay.sdk.Client;
 import com.bitpay.sdk.exceptions.InvoiceCreationException;
-import com.bitpay.sdk.model.Invoice.Invoice;
+import com.bitpay.sdk.model.invoice.Invoice;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.Assertions;
