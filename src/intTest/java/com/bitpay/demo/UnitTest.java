@@ -10,6 +10,8 @@ import com.bitpay.demo.gson.LocalDateDeserializer;
 import com.bitpay.demo.gson.LocalDateSerializer;
 import com.bitpay.demo.gson.LocalDateTimeDeserializer;
 import com.bitpay.demo.gson.LocalDateTimeSerializer;
+import com.bitpay.demo.gson.ZonedDateTimeDeserializer;
+import com.bitpay.demo.gson.ZonedDateTimeSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.ToNumberPolicy;
@@ -18,6 +20,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import org.apache.commons.io.FileUtils;
 
 public interface UnitTest {
@@ -27,6 +30,8 @@ public interface UnitTest {
         .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer())
         .registerTypeAdapter(LocalDate.class, new LocalDateDeserializer())
         .registerTypeAdapter(LocalDate.class, new LocalDateSerializer())
+        .registerTypeAdapter(ZonedDateTime.class, new ZonedDateTimeDeserializer())
+        .registerTypeAdapter(ZonedDateTime.class, new ZonedDateTimeSerializer())
         .setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE)
         .setExclusionStrategies(new ExcludeFields())
         .create();

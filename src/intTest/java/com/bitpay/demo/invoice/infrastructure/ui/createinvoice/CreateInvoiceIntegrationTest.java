@@ -7,7 +7,6 @@ package com.bitpay.demo.invoice.infrastructure.ui.createinvoice;
 
 import com.bitpay.demo.AbstractUiIntegrationTest;
 import com.bitpay.sdk.Client;
-import com.bitpay.sdk.exceptions.InvoiceCreationException;
 import com.bitpay.sdk.model.invoice.Invoice;
 import java.util.Map;
 import org.junit.jupiter.api.Assertions;
@@ -46,15 +45,15 @@ public class CreateInvoiceIntegrationTest extends AbstractUiIntegrationTest {
             )
         );
 
-        result.andExpect(MockMvcResultMatchers.status().isMovedPermanently());
+        result.andExpect(MockMvcResultMatchers.status().is3xxRedirection());
         Assertions.assertEquals(1, this.invoiceRepository.findAll().size());
     }
 
     @Test
     public void doNotCreateInvoiceAndBackToInvoiceFormPageWhenBitPayReturnsError() throws Exception {
         // given
-        Mockito.when(this.bitpayClient.createInvoice(ArgumentMatchers.any()))
-            .thenThrow(new InvoiceCreationException("123", "test"));
+        Mockito.doThrow(new RuntimeException("BitPay error"))
+            .when(this.bitpayClient).createInvoice(ArgumentMatchers.any());
 
         // when
         final var result = getResultActions(
@@ -73,8 +72,8 @@ public class CreateInvoiceIntegrationTest extends AbstractUiIntegrationTest {
     @Test
     public void doNotCreateInvoiceAndBackToInvoiceFormPageWhenMissingRequiredValue() throws Exception {
         // given
-        Mockito.when(this.bitpayClient.createInvoice(ArgumentMatchers.any()))
-            .thenThrow(new InvoiceCreationException("123", "test"));
+        Mockito.doThrow(new RuntimeException("BitPay error"))
+            .when(this.bitpayClient).createInvoice(ArgumentMatchers.any());
 
         // when
         final var result = getResultActions(

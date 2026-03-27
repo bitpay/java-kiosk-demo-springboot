@@ -31,7 +31,7 @@ public class CreateInvoiceExceptionHandler {
         @NonNull final RedirectAttributes redirectAttrs
     ) {
         logException(exception);
-        redirectAttrs.addFlashAttribute("error", exception.getReasonPhrase());
+        redirectAttrs.addFlashAttribute("error", exception.getMessage());
 
         return "redirect:";
     }

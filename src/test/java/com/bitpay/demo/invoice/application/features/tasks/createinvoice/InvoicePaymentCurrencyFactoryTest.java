@@ -7,6 +7,7 @@ package com.bitpay.demo.invoice.application.features.tasks.createinvoice;
 
 import com.bitpay.demo.UnitTest;
 import com.bitpay.demo.invoice.domain.payment.InvoicePayment;
+import java.util.AbstractMap;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -17,10 +18,11 @@ class InvoicePaymentCurrencyFactoryTest implements UnitTest, GetBitPayInvoice {
     void shouldMapToInvoicePaymentCurrency() throws JSONException {
         // given
         final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice = getBitPayInvoice();
+        final var firstEntry = bitPayInvoice.getPaymentTotals().entrySet().stream().findFirst().get();
 
         // when
         final var result = getTestedClass().create(
-            bitPayInvoice.getPaymentTotals().entrySet().stream().findFirst().get(),
+            new AbstractMap.SimpleEntry<>(firstEntry.getKey(), firstEntry.getValue().toString()),
             new InvoicePayment(null, null, null, null, null, null, null, null),
             bitPayInvoice
         );

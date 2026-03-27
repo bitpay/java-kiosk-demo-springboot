@@ -28,10 +28,12 @@ import com.bitpay.demo.invoice.domain.payment.TotalFee;
 import com.bitpay.sdk.model.invoice.MinerFees;
 import com.bitpay.sdk.model.invoice.MinerFeesItem;
 import com.bitpay.sdk.model.invoice.SupportedTransactionCurrencies;
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import lombok.NonNull;
 
@@ -58,7 +60,7 @@ class InvoicePaymentCurrencyFactory {
             invoicePayment,
             new CurrencyCode(code.getKey()),
             new Total(code.getValue()),
-            new Subtotal(bitPayInvoice.getPaymentSubTotals().getOrDefault(code.getKey(), null)),
+            new Subtotal(bitPayInvoice.getPaymentSubTotals().getOrDefault(code.getKey(), null).toString()),
             new DisplayTotal(bitPayInvoice.getPaymentDisplayTotals().getOrDefault(code.getKey(), null)),
             new DisplaySubtotal(bitPayInvoice.getPaymentDisplaySubTotals().getOrDefault(code.getKey(), null)),
             getSupportedTransactionCurrency(bitPaySupportedTransactionCurrency),
@@ -68,7 +70,9 @@ class InvoicePaymentCurrencyFactory {
         invoicePaymentTotal.addExchangeRates(
             getExchangeRates(
                 invoicePaymentTotal,
-                bitPayInvoice.getExchangeRates().getOrDefault(code.getKey(), new Hashtable<>())
+                convertBigDecimalMapToStringMap(
+                    bitPayInvoice.getExchangeRates().getOrDefault(code.getKey(), new Hashtable<>())
+                )
             )
         );
         invoicePaymentTotal.addPaymentCodes(
@@ -172,5 +176,14 @@ class InvoicePaymentCurrencyFactory {
             new Enabled(bitPaySupportedTransactionCurrency.getEnabled()),
             new Reason(bitPaySupportedTransactionCurrency.getReason())
         );
+    }
+
+    @NonNull
+    private Map<String, String> convertBigDecimalMapToStringMap(@NonNull final Map<String, BigDecimal> bigDecimalMap) {
+        return bigDecimalMap.entrySet().stream()
+            .collect(Collectors.toMap(
+                Map.Entry::getKey,
+                entry -> entry.getValue().toString()
+            ));
     }
 }
