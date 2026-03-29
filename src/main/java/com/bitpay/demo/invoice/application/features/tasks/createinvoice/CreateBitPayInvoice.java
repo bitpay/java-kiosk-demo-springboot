@@ -53,6 +53,7 @@ class CreateBitPayInvoice {
         invoice.setPosData(posData);
         invoice.setNotificationUrl(this.getNotificationUrl.execute(uuid));
         invoice.setExtendedNotifications(true);
+        invoice.setAutoRedirect(true);
 
         if (validatedParams.keySet().stream().anyMatch(key -> key.startsWith("buyer"))) {
             final Buyer buyer = getBuyer(validatedParams);

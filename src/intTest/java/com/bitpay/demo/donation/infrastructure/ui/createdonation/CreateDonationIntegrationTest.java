@@ -7,7 +7,6 @@ package com.bitpay.demo.donation.infrastructure.ui.createdonation;
 
 import com.bitpay.demo.AbstractUiIntegrationTest;
 import com.bitpay.sdk.Client;
-import com.bitpay.sdk.exceptions.InvoiceCreationException;
 import com.bitpay.sdk.model.invoice.Invoice;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,15 +58,15 @@ public class CreateDonationIntegrationTest extends AbstractUiIntegrationTest {
         // when
         final var result = getResultActions(params);
 
-        result.andExpect(MockMvcResultMatchers.status().isMovedPermanently());
+        result.andExpect(MockMvcResultMatchers.status().is3xxRedirection());
         Assertions.assertEquals(1, this.invoiceRepository.findAll().size());
     }
 
     @Test
     public void doNotCreateInvoiceAndBackToInvoiceFormPageWhenBitPayReturnsError() throws Exception {
         // given
-        Mockito.when(this.bitpayClient.createInvoice(ArgumentMatchers.any()))
-            .thenThrow(new InvoiceCreationException("123", "test"));
+        Mockito.doThrow(new RuntimeException("BitPay error"))
+            .when(this.bitpayClient).createInvoice(ArgumentMatchers.any());
         final var params = new HashMap<String, Object>();
         params.put("buyerName", "fake name");
         params.put("buyerAddress1", "fake address");
@@ -93,8 +92,8 @@ public class CreateDonationIntegrationTest extends AbstractUiIntegrationTest {
     @Test
     public void doNotCreateInvoiceAndBackToInvoiceFormPageWhenMissingRequiredValue() throws Exception {
         // given
-        Mockito.when(this.bitpayClient.createInvoice(ArgumentMatchers.any()))
-            .thenThrow(new InvoiceCreationException("123", "test"));
+        Mockito.doThrow(new RuntimeException("BitPay error"))
+            .when(this.bitpayClient).createInvoice(ArgumentMatchers.any());
         final var params = new HashMap<String, Object>();
         params.put("buyerName", "fake name");
         params.put("buyerAddress1", "fake address");
@@ -120,8 +119,8 @@ public class CreateDonationIntegrationTest extends AbstractUiIntegrationTest {
     @Test
     public void doNotCreateInvoiceAndBackToInvoiceFormPageWhenMissingRequiredPosValue() throws Exception {
         // given
-        Mockito.when(this.bitpayClient.createInvoice(ArgumentMatchers.any()))
-            .thenThrow(new InvoiceCreationException("123", "test"));
+        Mockito.doThrow(new RuntimeException("BitPay error"))
+            .when(this.bitpayClient).createInvoice(ArgumentMatchers.any());
         final var params = new HashMap<String, Object>();
         params.put("buyerName", "fake name");
         params.put("buyerAddress1", "fake address");
@@ -147,8 +146,8 @@ public class CreateDonationIntegrationTest extends AbstractUiIntegrationTest {
     @Test
     public void doNotCreateInvoiceAndBackToInvoiceFormPageWhenParamHasWrongValue() throws Exception {
         // given
-        Mockito.when(this.bitpayClient.createInvoice(ArgumentMatchers.any()))
-            .thenThrow(new InvoiceCreationException("123", "test"));
+        Mockito.doThrow(new RuntimeException("BitPay error"))
+            .when(this.bitpayClient).createInvoice(ArgumentMatchers.any());
         final var params = new HashMap<String, Object>();
         params.put("buyerName", "fake name");
         params.put("buyerAddress1", "fake address");

@@ -10,7 +10,6 @@ import com.bitpay.demo.invoice.domain.CurrencyCode;
 import com.bitpay.demo.invoice.domain.refund.InvoiceRefund;
 import com.bitpay.demo.invoice.domain.refund.InvoiceRefundInfo;
 import com.bitpay.demo.invoice.domain.refund.SupportRequest;
-import com.google.gson.Gson;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
@@ -37,7 +36,7 @@ class InvoiceRefundFactoryTest implements UnitTest, GetBitPayInvoice {
 
     private InvoiceRefundFactory getTestedClass() {
         return new InvoiceRefundFactory(
-            object -> new Gson().toJson(object),
+            object -> GSON.toJson(object),
             getInvoiceRefundInfoFactory()
         );
     }

@@ -42,6 +42,7 @@ import java.time.ZoneId;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import lombok.NonNull;
@@ -94,18 +95,20 @@ class InvoiceFactory {
             new BitPayUrl(bitPayInvoice.getUrl()),
             new RedirectUrl(bitPayInvoice.getRedirectUrl()),
             new CloseUrl(bitPayInvoice.getCloseUrl()),
-            new AcceptanceWindow(bitPayInvoice.getAcceptanceWindow()),
+            new AcceptanceWindow(Optional.ofNullable(bitPayInvoice.getAcceptanceWindow()).orElse(0).longValue()),
             new Token(bitPayInvoice.getToken()),
             new MerchantName(bitPayInvoice.getMerchantName()),
             new ItemDescription(bitPayInvoice.getItemDesc()),
             new BillId(bitPayInvoice.getBillId()),
-            new TargetConfirmations(bitPayInvoice.getTargetConfirmations()),
-            new LowFeeDetected(bitPayInvoice.getLowFeeDetected()),
-            new AutoRedirect(bitPayInvoice.getAutoRedirect()),
-            new ShopperUser(bitPayInvoice.getShopper().getName()),
-            new JsonPayProRequired(bitPayInvoice.getJsonPayProRequired()),
-            new BitPayIdRequired(bitPayInvoice.getBitpayIdRequired()),
-            new IsCancelled(bitPayInvoice.getIsCancelled())
+            new TargetConfirmations(Optional.ofNullable(bitPayInvoice.getTargetConfirmations()).orElse(0).longValue()),
+            new LowFeeDetected(Optional.ofNullable(bitPayInvoice.getLowFeeDetected()).orElse(false)),
+            new AutoRedirect(Optional.ofNullable(bitPayInvoice.getAutoRedirect()).orElse(false)),
+            new ShopperUser(
+                Optional.ofNullable(bitPayInvoice.getShopper()).map(shopper -> shopper.getName()).orElse("")
+            ),
+            new JsonPayProRequired(Optional.ofNullable(bitPayInvoice.getJsonPayProRequired()).orElse(false)),
+            new BitPayIdRequired(Optional.ofNullable(bitPayInvoice.getBitpayIdRequired()).orElse(false)),
+            new IsCancelled(Optional.ofNullable(bitPayInvoice.getIsCancelled()).orElse(false))
         );
 
         invoice.addInvoiceTransactions(

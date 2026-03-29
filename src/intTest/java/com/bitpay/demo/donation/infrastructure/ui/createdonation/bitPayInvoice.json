@@ -46,7 +46,7 @@
     "phone": "123456789",
     "notify": true
   },
-  "buyerProvidedInfo": {
+  "invoiceBuyerProvidedInfo": {
     "name": "John Wick",
     "phoneNumber": "123456789",
     "selectedTransactionCurrency": "BTC",

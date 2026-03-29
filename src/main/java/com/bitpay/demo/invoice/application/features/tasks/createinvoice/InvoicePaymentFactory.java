@@ -16,6 +16,7 @@ import com.bitpay.demo.invoice.domain.payment.TransactionCurrency;
 import com.bitpay.demo.invoice.domain.payment.UnderpaidAmount;
 import com.bitpay.demo.invoice.domain.payment.UniversalCodesPaymentString;
 import com.bitpay.demo.invoice.domain.payment.UniversalCodesVerificationLink;
+import java.util.AbstractMap;
 import java.util.Collection;
 import java.util.Optional;
 import lombok.NonNull;
@@ -33,8 +34,10 @@ class InvoicePaymentFactory {
     InvoicePayment create(@NonNull final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice) {
         final var invoicePayment = new InvoicePayment(
             new AmountPaid(bitPayInvoice.getAmountPaid().doubleValue()),
-            new DisplayAmountPaid(bitPayInvoice.getDisplayAmountPaid().doubleValue()),
-            new NonPayProPaymentReceived(bitPayInvoice.getNonPayProPaymentReceived()),
+            new DisplayAmountPaid(Double.parseDouble(bitPayInvoice.getDisplayAmountPaid())),
+            new NonPayProPaymentReceived(
+                Optional.ofNullable(bitPayInvoice.getNonPayProPaymentReceived()).orElse(false)
+            ),
             new UniversalCodesPaymentString(bitPayInvoice.getUniversalCodes().getBitpay()),
             new UniversalCodesVerificationLink(bitPayInvoice.getUniversalCodes().getVerificationLink()),
             new TransactionCurrency(bitPayInvoice.getTransactionCurrency()),
@@ -62,7 +65,11 @@ class InvoicePaymentFactory {
         @NonNull final com.bitpay.sdk.model.invoice.Invoice bitPayInvoice
     ) {
         return bitPayInvoice.getPaymentTotals().entrySet().stream()
-            .map(code -> this.invoicePaymentCurrencyFactory.create(code, invoicePayment, bitPayInvoice))
+            .map(code -> this.invoicePaymentCurrencyFactory.create(
+                new AbstractMap.SimpleEntry<>(code.getKey(), code.getValue().toString()),
+                invoicePayment,
+                bitPayInvoice
+            ))
             .toList();
     }
 }
