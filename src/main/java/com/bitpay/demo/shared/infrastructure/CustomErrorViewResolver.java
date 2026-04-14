@@ -6,17 +6,13 @@
 package com.bitpay.demo.shared.infrastructure;
 
 import com.bitpay.demo.shared.bitpayproperties.BitPayProperties;
-import jakarta.servlet.http.HttpServletRequest;
-import java.util.Map;
 import lombok.NonNull;
-import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
-
-@Configuration
-class CustomErrorViewResolver implements ErrorViewResolver {
+@ControllerAdvice
+class CustomErrorViewResolver {
 
     private final BitPayProperties bitPayProperties;
 
@@ -24,16 +20,8 @@ class CustomErrorViewResolver implements ErrorViewResolver {
         this.bitPayProperties = bitPayProperties;
     }
 
-    @Override
-    public ModelAndView resolveErrorView(
-        @NonNull final HttpServletRequest request,
-        @NonNull final HttpStatus status,
-        @NonNull final Map<String, Object> model
-    ) {
-        if (!HttpStatus.NOT_FOUND.equals(status)) {
-            return null;
-        }
-
-        return new ModelAndView("error/404", "design", this.bitPayProperties.getDesign());
+    @ModelAttribute
+    public void addDesignAttribute(Model model) {
+        model.addAttribute("design", this.bitPayProperties.getDesign());
     }
 }

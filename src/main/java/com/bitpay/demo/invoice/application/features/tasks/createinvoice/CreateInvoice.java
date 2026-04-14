@@ -17,6 +17,7 @@ import com.bitpay.sdk.model.invoice.Invoice;
 import java.util.Map;
 import java.util.UUID;
 import lombok.NonNull;
+import org.springframework.transaction.annotation.Transactional;
 
 @DependencyInjection
 public class CreateInvoice {
@@ -42,6 +43,7 @@ public class CreateInvoice {
     }
 
     @NonNull
+    @Transactional
     public String execute(@NonNull final Map<String, Object> requestParameters)
         throws MissingRequiredField, BitPayException {
 

@@ -1,6 +1,6 @@
 plugins {
     id 'checkstyle'
-    id 'org.springframework.boot' version '3.3.13'
+    id 'org.springframework.boot' version '4.0.5'
     id 'io.spring.dependency-management' version '1.1.7'
     id 'java'
 }
@@ -29,12 +29,12 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.44'
     implementation 'com.google.code.gson:gson:2.13.2'
     implementation 'com.bitpay:bitpay_sdk:10.3.0'
-    implementation 'org.liquibase:liquibase-core:4.31.1'
-    implementation 'com.h2database:h2:2.1.214'
+    implementation 'org.liquibase:liquibase-core:5.0.2'
+    implementation 'com.h2database:h2:2.3.232'
     implementation 'org.springframework:spring-webflux:7.0.6'
     implementation 'org.springframework:spring-websocket:7.0.6'
     implementation 'org.springframework:spring-messaging:7.0.6'
-    implementation "org.springframework.boot:spring-boot-starter-data-jpa:3.5.12"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:4.0.5"
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -74,8 +74,8 @@ task integrationTest(type: Test) {
 }
 
 checkstyle {
-    toolVersion = "8.39"
-    project.ext.checkstyleVersion = '8.39'
+    toolVersion = "10.20.2"
+    project.ext.checkstyleVersion = '10.20.2'
     configFile = rootProject.file("${rootProject.projectDir}/config/checkstyle/checkstyle.xml")
 }
 
