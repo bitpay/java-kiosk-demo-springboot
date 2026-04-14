@@ -7,7 +7,9 @@ plugins {
 
 group = 'com.bitpay'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+java {
+    sourceCompatibility = '17'
+}
 
 repositories {
     mavenCentral()
@@ -81,6 +83,6 @@ checkstyle {
 
 tasks.withType(Checkstyle) {
     reports {
-        xml.destination rootProject.file("build/reports/checkstyle-result.xml")
+        xml.outputLocation = rootProject.file("build/reports/checkstyle-result.xml")
     }
 }
