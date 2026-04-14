@@ -5,7 +5,6 @@
 
 package com.bitpay.demo.invoice.application.features.tasks.createinvoice;
 
-import com.bitpay.demo.UnitTest;
 import com.bitpay.demo.invoice.domain.Amount;
 import com.bitpay.demo.invoice.domain.Invoice;
 import com.bitpay.demo.invoice.domain.InvoiceUuid;
@@ -35,7 +34,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.skyscreamer.jsonassert.comparator.CustomComparator;
 
-class InvoiceFactoryTest implements UnitTest, GetBitPayInvoice {
+class InvoiceFactoryTest implements GetBitPayInvoice {
 
     @Test
     void shouldMapToInvoice() throws JSONException {

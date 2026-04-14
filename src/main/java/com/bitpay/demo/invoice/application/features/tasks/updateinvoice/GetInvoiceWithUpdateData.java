@@ -60,7 +60,7 @@ class GetInvoiceWithUpdateData {
             invoice.getCreatedDate(),
             invoice.getTransactionSpeed(),
             getPayment(updateData, invoice.getInvoicePayment()),
-            getInvoiceBuyer(invoice.getInvoiceBuyer(), (Map<String, Object>) updateData.get("buyerFields")),
+            getInvoiceBuyer(invoice.getInvoiceBuyer(), updateData.get("buyerFields") instanceof Map ? (Map<String, Object>) updateData.get("buyerFields") : null),
             invoice.getInvoiceRefund(),
             (BitPayOrderId) getFieldValue("orderId", updateData, BitPayOrderId.class, invoice.getBitPayOrderId()),
             getExpirationTime(updateData, invoice),

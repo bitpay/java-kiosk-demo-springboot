@@ -5,7 +5,6 @@
 
 package com.bitpay.demo.invoice.application.features.tasks.createinvoice;
 
-import com.bitpay.demo.UnitTest;
 import com.bitpay.demo.invoice.domain.CurrencyCode;
 import com.bitpay.demo.invoice.domain.refund.InvoiceRefund;
 import com.bitpay.demo.invoice.domain.refund.InvoiceRefundInfo;
@@ -16,7 +15,7 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-class InvoiceRefundFactoryTest implements UnitTest, GetBitPayInvoice {
+class InvoiceRefundFactoryTest implements GetBitPayInvoice {
 
     @Test
     void shouldMapToInvoiceRefund() throws JSONException {

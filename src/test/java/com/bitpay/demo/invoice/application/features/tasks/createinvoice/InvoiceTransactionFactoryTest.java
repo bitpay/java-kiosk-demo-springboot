@@ -5,14 +5,13 @@
 
 package com.bitpay.demo.invoice.application.features.tasks.createinvoice;
 
-import com.bitpay.demo.UnitTest;
 import com.bitpay.demo.invoice.domain.Invoice;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-class InvoiceTransactionFactoryTest implements UnitTest, GetBitPayInvoice {
+class InvoiceTransactionFactoryTest implements GetBitPayInvoice {
 
     @Test
     void shouldMapToInvoiceTransaction() throws JSONException {
