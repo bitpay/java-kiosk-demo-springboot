@@ -26,7 +26,7 @@ class GetInvoiceWithUpdateDataTest implements UnitTest {
         final var invoice = toObject(invoiceJson, Invoice.class);
         final var updateDataJson = getDataFromFile("updateData.json");
         final Map<String, Object> updateData = GSON.fromJson(
-            updateDataJson, 
+            updateDataJson,
             new TypeToken<Map<String, Object>>(){}.getType()
         );
 

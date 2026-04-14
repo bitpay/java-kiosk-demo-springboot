@@ -20,7 +20,7 @@ class ValidateUpdateDataTest implements UnitTest {
         // given
         final var updateDataJson = getDataFromFile("updateData.json");
         final Map<String, Object> updateData = GSON.fromJson(
-            updateDataJson, 
+            updateDataJson,
             new TypeToken<Map<String, Object>>(){}.getType()
         );
 
@@ -39,7 +39,7 @@ class ValidateUpdateDataTest implements UnitTest {
         // given
         final var updateDataJson = getDataFromFile("invalidUpdateData.json");
         final Map<String, Object> updateData = GSON.fromJson(
-            updateDataJson, 
+            updateDataJson,
             new TypeToken<Map<String, Object>>(){}.getType()
         );
 
