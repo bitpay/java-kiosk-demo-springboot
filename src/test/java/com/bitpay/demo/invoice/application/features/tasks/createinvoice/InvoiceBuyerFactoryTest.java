@@ -5,7 +5,6 @@
 
 package com.bitpay.demo.invoice.application.features.tasks.createinvoice;
 
-import com.bitpay.demo.UnitTest;
 import com.bitpay.demo.invoice.domain.buyer.BuyerEmailAddress;
 import com.bitpay.demo.invoice.domain.buyer.BuyerName;
 import com.bitpay.demo.invoice.domain.buyer.BuyerPhoneNumber;
@@ -22,7 +21,7 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-class InvoiceBuyerFactoryTest implements UnitTest, GetBitPayInvoice {
+class InvoiceBuyerFactoryTest implements GetBitPayInvoice {
 
     @Test
     void shouldMapToInvoiceBuyer() throws JSONException {

@@ -58,22 +58,34 @@ bitpay:
 
 server:
   port: 8000
+  error:
+    path: /error
 
 spring:
   datasource:
-    url: "jdbc:h2:mem:test;MODE=MYSQL"
+    url: "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
     username: test
     password: test
     hikari:
       maxLifetime: 150000
+      maximumPoolSize: 2
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
         format: true
+        enable_lazy_load_no_trans: false
+        jdbc.batch_size: 20
+        order.inserts: true
+        order.updates: true
+  liquibase:
+    enabled: false
   main:
     banner-mode: off
+  web:
+    resources:
+      add-mappings: true
 
 app-url: "https://localhost:8080"

@@ -26,7 +26,9 @@ public class HttpCreateInvoice {
     }
 
     @PostMapping("/invoice")
-    public ResponseEntity execute(@NonNull @RequestParam final Map<String, Object> params) throws BitPayException {
+    public ResponseEntity<Void> execute(
+        @NonNull @RequestParam final Map<String, Object> params
+    ) throws BitPayException {
         final String url = this.createInvoice.execute(params);
 
         final HttpHeaders headers = new HttpHeaders();

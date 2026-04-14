@@ -8,6 +8,7 @@ package com.bitpay.demo.invoice.application.features.tasks.updateinvoice;
 import com.bitpay.demo.UnitTest;
 import com.bitpay.demo.invoice.domain.Invoice;
 import com.bitpay.demo.shared.StringToObjectParser;
+import com.google.gson.reflect.TypeToken;
 import java.util.Map;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,10 @@ class GetInvoiceWithUpdateDataTest implements UnitTest {
         final var invoiceJson = getDataFromFile("invoice.json");
         final var invoice = toObject(invoiceJson, Invoice.class);
         final var updateDataJson = getDataFromFile("updateData.json");
-        final var updateData = toObject(updateDataJson, Map.class);
+        final Map<String, Object> updateData = GSON.fromJson(
+            updateDataJson,
+            new TypeToken<Map<String, Object>>(){}.getType()
+        );
 
         // when
         final var result = getTestedClass().execute(
