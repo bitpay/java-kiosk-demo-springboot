@@ -34,7 +34,7 @@ dependencies {
     implementation 'org.springframework:spring-webflux:7.0.6'
     implementation 'org.springframework:spring-websocket:7.0.6'
     implementation 'org.springframework:spring-messaging:7.0.6'
-    implementation "org.springframework.boot:spring-boot-starter-data-jpa:3.5.12"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:4.0.6"
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
