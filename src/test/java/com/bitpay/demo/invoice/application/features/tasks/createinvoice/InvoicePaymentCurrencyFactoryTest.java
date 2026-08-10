@@ -5,14 +5,13 @@
 
 package com.bitpay.demo.invoice.application.features.tasks.createinvoice;
 
-import com.bitpay.demo.UnitTest;
 import com.bitpay.demo.invoice.domain.payment.InvoicePayment;
 import java.util.AbstractMap;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-class InvoicePaymentCurrencyFactoryTest implements UnitTest, GetBitPayInvoice {
+class InvoicePaymentCurrencyFactoryTest implements GetBitPayInvoice {
 
     @Test
     void shouldMapToInvoicePaymentCurrency() throws JSONException {

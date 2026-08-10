@@ -5,12 +5,11 @@
 
 package com.bitpay.demo.invoice.application.features.tasks.createinvoice;
 
-import com.bitpay.demo.UnitTest;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
-class InvoiceBuyerProvidedInfoFactoryTest implements UnitTest, GetBitPayInvoice {
+class InvoiceBuyerProvidedInfoFactoryTest implements GetBitPayInvoice {
 
     @Test
     void shouldMapToInvoiceBuyerProvidedInfo() throws JSONException {

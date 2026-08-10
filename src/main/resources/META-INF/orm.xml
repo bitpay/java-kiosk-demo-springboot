@@ -569,7 +569,7 @@
             </one-to-many>
             <embedded name="addressesJson">
                 <attribute-override name="value">
-                    <column name="addresses_json"/>
+                    <column name="addresses_json" column-definition="text"/>
                 </attribute-override>
             </embedded>
             <embedded name="addressRequestPending">

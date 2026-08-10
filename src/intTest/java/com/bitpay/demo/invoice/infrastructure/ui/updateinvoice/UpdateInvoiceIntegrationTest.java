@@ -76,7 +76,7 @@ public class UpdateInvoiceIntegrationTest extends AbstractUiIntegrationTest {
 
         // then
         result.andExpect(MockMvcResultMatchers.status().isBadRequest())
-            .andExpect(MockMvcResultMatchers.content().json(getDataFromFile("invalidUpdateDataResponse.json"), false));
+            .andExpect(MockMvcResultMatchers.content().json(getDataFromFile("invalidUpdateDataResponse.json")));
         Assertions.assertEquals(
             "new",
             this.invoiceRepository.findById(invoice.getInvoiceId()).getStatus().value()

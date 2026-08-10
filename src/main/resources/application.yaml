@@ -58,6 +58,8 @@ bitpay:
 
 server:
   port: 8000
+  error:
+    path: /error
 
 spring:
   datasource:
@@ -75,5 +77,8 @@ spring:
         format: true
   main:
     banner-mode: off
+  web:
+    resources:
+      add-mappings: true
 
 app-url: "https://localhost:8080"

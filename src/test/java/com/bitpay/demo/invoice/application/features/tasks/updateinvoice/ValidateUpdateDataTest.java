@@ -8,6 +8,7 @@ package com.bitpay.demo.invoice.application.features.tasks.updateinvoice;
 import com.bitpay.demo.UnitTest;
 import com.bitpay.demo.invoice.domain.BitPayId;
 import com.bitpay.demo.shared.StringToObjectParser;
+import com.google.gson.reflect.TypeToken;
 import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,10 @@ class ValidateUpdateDataTest implements UnitTest {
     void shouldPassValidation() {
         // given
         final var updateDataJson = getDataFromFile("updateData.json");
-        final var updateData = toObject(updateDataJson, Map.class);
+        final Map<String, Object> updateData = GSON.fromJson(
+            updateDataJson,
+            new TypeToken<Map<String, Object>>(){}.getType()
+        );
 
         // when
         getTestedClass().execute(
@@ -34,7 +38,10 @@ class ValidateUpdateDataTest implements UnitTest {
     void shouldNotPassValidation() {
         // given
         final var updateDataJson = getDataFromFile("invalidUpdateData.json");
-        final var updateData = toObject(updateDataJson, Map.class);
+        final Map<String, Object> updateData = GSON.fromJson(
+            updateDataJson,
+            new TypeToken<Map<String, Object>>(){}.getType()
+        );
 
         try {
             // when
