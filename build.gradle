@@ -28,7 +28,7 @@ sourceSets {
 
 dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
-    compileOnly 'org.projectlombok:lombok:1.18.46'
+    compileOnly 'org.projectlombok:lombok:1.18.48'
     implementation 'com.google.code.gson:gson:2.14.0'
     implementation 'com.bitpay:bitpay_sdk:10.3.2'
     implementation 'org.liquibase:liquibase-core:5.0.3'
