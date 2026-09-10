@@ -32,7 +32,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.14.0'
     implementation 'com.bitpay:bitpay_sdk:10.3.2'
     implementation 'org.liquibase:liquibase-core:5.0.4'
-    implementation 'com.h2database:h2:2.4.240'
+    implementation 'com.h2database:h2:2.5.250'
     implementation 'org.springframework:spring-webflux:7.0.9'
     implementation 'org.springframework:spring-websocket:7.0.9'
     implementation 'org.springframework:spring-messaging:7.0.9'
