@@ -30,7 +30,7 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     compileOnly 'org.projectlombok:lombok:1.18.48'
     implementation 'com.google.code.gson:gson:2.14.0'
-    implementation 'com.bitpay:bitpay_sdk:10.3.2'
+    implementation 'com.bitpay:bitpay_sdk:10.3.3'
     implementation 'org.liquibase:liquibase-core:5.0.4'
     implementation 'com.h2database:h2:2.5.252'
     implementation 'org.springframework:spring-webflux:7.0.9'
